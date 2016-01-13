@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.0)
 project(VariadicPrint)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -9,7 +9,7 @@ set(SOURCE_FILES main.cpp include/gwachs/variadic_print.hpp include/gwachs/conta
 add_executable(VariadicPrint ${SOURCE_FILES})
 
 INSTALL(DIRECTORY ./include/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
-install(FILES variadicprint-config.cmake DESTINATION lib/gwachs)
+install(FILES variadicprint-config.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/VariadicPrint)
 
 
 set(CPACK_PACKAGE_NAME "VariadicPrint Library")
