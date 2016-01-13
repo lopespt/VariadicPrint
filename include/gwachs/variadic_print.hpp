@@ -30,12 +30,12 @@ namespace gwl {
                 print(T f, ARGS ... args);
 
         template<char sep = ' ', typename T, typename ... ARGS>
-        typename std::enable_if<!std::is_arithmetic<T>::value && !is_container<T>::value >::type
+        typename std::enable_if<!std::is_arithmetic<T>::value && !is_container<T>::value>::type
                 print(T f, ARGS ... args);
 
 //Non arithmetic behavior
         template<char sep, typename T, typename ... ARGS>
-        typename std::enable_if<!std::is_arithmetic<T>::value && !is_container<T>::value >::type
+        typename std::enable_if<!std::is_arithmetic<T>::value && !is_container<T>::value>::type
         print(T f, ARGS ... args) {
             std::cout << f;
             print<sep, ARGS ...>(args...);
@@ -57,13 +57,11 @@ namespace gwl {
         //Type Traits for containers
         template<char c = ' ', typename T, typename ... ARGS>
         typename std::enable_if<is_container<T>::value>::type
-        print(T f, ARGS ... args){
-            for(const auto &i : f){
+        print(T f, ARGS ... args) {
+            for (const auto &i : f) {
                 print(i, c);
             }
         };
-
-
 
 
         template<char c = ' ', typename ... ARGS>
