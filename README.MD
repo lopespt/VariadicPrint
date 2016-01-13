@@ -6,6 +6,27 @@ This is a demonstration of using type traits and templates programming in order 
 Use cases:
 
 ```c++
+
+#include <iostream>
+#include <list>
+#include <vector>
+
+#include "variadic_print.hpp"
+
+using namespace std;
+using namespace gwl::iostream;
+
+struct Test{
+    int a;
+    int b;
+};
+
+std::ostream & operator<<(std::ostream &out, const Test& t){
+    out << "{A=" << t.a << "  B=" << t.b << "}";
+    return out;
+}
+
+int main() {
     print("Simple print\n");
 
     print("Testing different primitive types: ", 2,5.,6.,'z','\n'); //Uses default ostream's operator <<
@@ -27,4 +48,5 @@ Use cases:
     std::vector<int> v{10,9,8,7,6,5};
     printl(v,"\n");
     
+}
 ```
