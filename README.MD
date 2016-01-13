@@ -1,5 +1,5 @@
-TypeTraits Print
-=================
+TypeTraits Print For C++
+========================
 
 This is a demonstration of using type traits and templates programming in order to print formatted output safely.
 
