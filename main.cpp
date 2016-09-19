@@ -19,6 +19,11 @@ std::ostream & operator<<(std::ostream &out, const Test& t){
 
 int main() {
 
+    std::vector<int> teste={1,2,3,4};
+    for(int i=0; i<4;i++){
+        printf("%d", teste[i]);
+    }
+
     print("Simple print\n");
 
     print("Testing different primitive types: ", 2,5.,6.,'z','\n'); //Uses default ostream's operator <<

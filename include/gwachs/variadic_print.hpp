@@ -5,9 +5,9 @@
 #ifndef VARIADICPRINT_VARIADIC_PRINT_HPP
 #define VARIADICPRINT_VARIADIC_PRINT_HPP
 
+#include "container_typetraits.hpp"
 #include <iostream>
 #include <type_traits>
-#include "container_typetraits.hpp"
 
 namespace gwl {
     namespace iostream {
@@ -45,10 +45,12 @@ namespace gwl {
         template<char sep, typename T, typename ... ARGS>
         typename std::enable_if<std::is_arithmetic<T>::value>::type
         print(T f, ARGS ... args) {
-            if (sep != '\0')
+            if (sep != '\0') {
                 std::cout << f << sep;
-            else
+            } else {
                 std::cout << f;
+            }
+
 
             print<sep, ARGS ...>(args...);
         };
@@ -57,7 +59,7 @@ namespace gwl {
         //Type Traits for containers
         template<char c = ' ', typename T, typename ... ARGS>
         typename std::enable_if<is_container<T>::value>::type
-        print(T f, ARGS ... args) {
+        print(T f, ARGS ...  /*args*/) {
             for (const auto &i : f) {
                 print(i, c);
             }
@@ -69,7 +71,7 @@ namespace gwl {
             print<c, ARGS...>(args ...);
             printf("\n");
         }
-    }
-}
+    }  // namespace iostream
+} // namespace gwl
 
 #endif //VARIADICPRINT_VARIADIC_PRINT_HPP
